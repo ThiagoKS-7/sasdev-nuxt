@@ -30,12 +30,50 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    "@nuxtjs/color-mode",
+    '@nuxtjs/axios'
   ],
+  axios: {
+    retry: { retries: 3 },
+    credentials: true,
+    baseURL: 'https://sys-dev.searchandstay.com/api', // Used as fallback if no runtime config is provided
+    headers: {
+      common: {
+        'Accept': 'application/json, text/plain, */*'
+      },
+      delete: {},
+      get: {},
+      head: {},
+      post: {},
+      put: {},
+      patch: {}
+    }
+  },
 
+  publicRuntimeConfig: {
+    axios: {
+      browserBaseURL: process.env.BROWSER_BASE_URL
+    }
+  },
+
+  privateRuntimeConfig: {
+    axios: {
+      baseURL: process.env.BASE_URL
+    }
+  },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
   ],
-
+  colorMode: {
+    preference: 'system', // default value of $colorMode.preference
+    fallback: 'dark', // fallback value if not system preference found
+    hid: 'nuxt-color-mode-script',
+    globalName: '__NUXT_COLOR_MODE__',
+    componentName: 'ColorScheme',
+    classPrefix: '',
+    classSuffix: '-mode',
+    storageKey: 'nuxt-color-mode'
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     postcss: {
