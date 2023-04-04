@@ -25,6 +25,12 @@
 .header-title {
     @apply px-3 text-[20px];
 }
+.add-button {
+    @apply opacity-75 cursor-default;
+}
+.add-button:hover {
+    @apply opacity-100 cursor-pointer;
+}
 /*============================ */
 
 /* ===== RULE CARD ===== */
@@ -76,6 +82,12 @@
 
 
  /* ===== LOGIN ===== */
+.login_wrapper {
+    @apply bg-violet-400 absolute px-[3em] py-[3em] rounded-[2em] w-[40vw] h-[80%] top-[10%] left-[30%]
+}
+.dark-mode .login_wrapper {
+    @apply bg-indigo-950 absolute px-[3em] py-[3em] rounded-[2em] w-[40vw] h-[80%] top-[10%] left-[30%]
+}
 .form_input {
     @apply  my-5 flex justify-between w-[400px];
 }
@@ -83,13 +95,22 @@
     @apply  my-5 flex justify-between w-[400px] opacity-50;
 }
 .submit-button {
-    @apply w-[200px] rounded-[1em] bg-sky-900 py-3 text-xl;
+    @apply w-[200px] rounded-[1em] bg-sky-400 py-3 text-xl;
 }
 .submit-button:hover {
-    @apply w-[200px] rounded-[1em] bg-sky-700 border-sky-500 py-3 text-xl;
+    @apply w-[200px] rounded-[1em] bg-sky-200 border-sky-500 py-3 text-xl;
 }
 .submit-button:disabled {
-    @apply w-[200px] rounded-[1em] bg-sky-900 opacity-50 py-3 text-xl;
+    @apply w-[200px] rounded-[1em] bg-sky-500 opacity-50 py-3 text-xl;
+}
+.dark-mode .submit-button {
+    @apply w-[200px] rounded-[1em] bg-sky-600 py-3 text-xl;
+}
+.dark-mode .submit-button:hover {
+    @apply w-[200px] rounded-[1em] bg-sky-500 border-sky-500 py-3 text-xl;
+}
+.dark-mode .submit-button:disabled {
+    @apply w-[200px] rounded-[1em] bg-sky-700 opacity-50 py-3 text-xl;
 }
  /*================== */
 
@@ -123,5 +144,64 @@
 }
 .delete-button:hover {
     @apply absolute top-10 right-[5%] opacity-100 cursor-pointer drop-shadow-[0_1em_2em_#ff6486aa];
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+  
+.switch input { 
+opacity: 0;
+width: 0;
+height: 0;
+}
+
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+-webkit-transition: .4s;
+transition: .4s;
+}
+
+.slider:before {
+position: absolute;
+content: "";
+height: 26px;
+width: 26px;
+left: 4px;
+bottom: 4px;
+background-color: white;
+-webkit-transition: .4s;
+transition: .4s;
+}
+
+input:checked + .slider {
+background-color: #2196F3;
+}
+
+input:focus + .slider {
+box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+-webkit-transform: translateX(26px);
+-ms-transform: translateX(26px);
+transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+border-radius: 34px;
+}
+
+.slider.round:before {
+border-radius: 50%;
 }
 /*================= */
