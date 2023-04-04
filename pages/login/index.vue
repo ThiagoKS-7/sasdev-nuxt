@@ -1,5 +1,8 @@
 <template>
-    <div class="bg-indigo-950 absolute px-[3em] py-[3em] rounded-[2em] w-[40vw] h-[85vh] top-[10%] left-[30%]">
+    <div class="login_wrapper">
+        <div class="absolute top-5 right-0">
+            <ThemeSwitch/>
+        </div>
         <h1 class="text-[5em] mb-[1em]">Login</h1>
         <div  @submit="loginUser()">
             <div class="form_input">

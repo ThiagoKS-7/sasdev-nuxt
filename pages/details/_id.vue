@@ -11,10 +11,10 @@
                     <h3 class="text-xl">Order: {{ details?.order}}</h3>
                 </div>
                 <div v-if="showForm" class="flex flex-col ml-[3em]">
-                    <form method="PUT" :onSubmit="updateUser()" class="flex flex-col items-center">
+                    <form class="flex flex-col items-center" @submit="updateRule()">
                         <div class="form_input">
                             <span class="flex items-center">Name: </span>
-                            <input :disabled="loading" type="text" v-model="form.name" required class="ml-3 rounded-[0.5em] w-[90%] text-black h-[34px]" placeholder="   Enter user's name">
+                            <input :disabled="loading" type="text" v-model="form.name" required class="ml-3 rounded-[0.5em] w-[90%] text-black h-[34px]" placeholder="   Enter rule's name">
                         </div>
                         <div class="form_input">
                             <span class="flex items-center">Status: </span>
@@ -73,16 +73,16 @@ export default {
                 const {data} = await this.$axios.$get(`/admin/house_rules/${id}`)
                 this.details = data
             } catch (e) {
-                console.error(e)
+                this.$router.push("/")
             }
         },
         getImageUrl() {
             return `https://picsum.photos/200/?id=${this.$route.params.id.toString()}`
         },
         askForEdit() {
-            this.showForm = confirm("Are you sure you want to edit this user's details?")
+            this.showForm = confirm("Are you sure you want to edit this rules's details?")
         },
-        async updateUser() {
+        async updateRule() {
             try {
                 this.loading = true
                 const body = {
@@ -93,15 +93,15 @@ export default {
                 }
                 const id = this.$route.params ? this.$route.params.id : "-"
                 await this.$axios.$put(`/admin/house_rules/${id}`, body)
-                setTimeout(() => this.$router.push("/"), 1000)
             } catch (e) {
                 console.error(e)
             } finally {
                 this.loading = false
+                this.$router.push("/")
             }
         },
         async askForDelete() {
-            if (confirm("Are you sure you want to delete this user?")) {
+            if (confirm("Are you sure you want to delete this rule?")) {
                 try {
                     this.loading = true
                     const id = this.$route.params ? this.$route.params.id : "-"
