@@ -3,7 +3,9 @@ import axios from "axios";
 axios.interceptors.request.use(config => {
 
   let token = window.localStorage.getItem('token');
-  config.headers.common["Authorization"] = `Bearer ${token}`;
+  if (token) {
+    config.headers.common["Authorization"] = `Bearer ${token}`;
+  }
 
   return config;
 });
@@ -18,10 +20,7 @@ axios.interceptors.response.use(
     try {
       const {
         response: { status },
-      } = error;
-      if (status === UNAUTHORIZED) {
-        window.location.href = intranetURL;
-      }
+      } = error
       return Promise.reject(error);
     } catch {
       return Promise.reject(error);

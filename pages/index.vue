@@ -2,12 +2,12 @@
   <div>
     <Header/>
     <div class="grid grid-cols-2 md:grid-cols-3">
-        <div v-for="rule in ruleList.entities" class="rule-card" @click="checkDetails(rule.id)">
+        <div v-for="rule in ruleList.entities" :class="rule.active ? 'rule-card' : 'inactive-card'" @click="checkDetails(rule.id)">
           <img :src="getImageUrl(rule.id)" class="rounded-[1em]"/>
           <div class="flex flex-col">
             <h1 class="text-md md:text-2xl"> RULE #{{ rule.id }}: </h1>
             <h3 class="text-sm md:text-xl">Name: {{rule.name }}</h3>
-            <h3 class="text-sm md:text-xl">Status: {{rule.status }}</h3>
+            <h3 class="text-sm md:text-xl">Status: {{rule.active == "0" ? "Inactive" : "Active" }}</h3>
           </div>
         </div>
     </div>  
