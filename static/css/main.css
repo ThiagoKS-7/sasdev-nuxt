@@ -26,3 +26,49 @@
     @apply px-3 text-[20px];
 }
 /*============================ */
+
+/* ===== RULE CARD ===== */
+.rule-card {
+    @apply flex flex-col md:flex-row justify-between m-[1.5em];
+    @apply w-[43vw] p-[1em] items-center bg-emerald-700 opacity-80 rounded-[1em];
+
+}
+.rule-card:hover {
+    @apply flex justify-between m-[1.5em] w-[43vw] md:w-[30vw] p-[1em];
+    @apply cursor-pointer items-center bg-emerald-500 opacity-100 rounded-[1em];
+    filter: drop-shadow(0 0 2em #646cffaa);
+
+}
+/*====================== */
+
+/* ===== PAGINATION ===== */
+.pagination-link{
+   @apply text-3xl opacity-75 cursor-default;
+}
+
+.pagination-link:hover{
+   @apply text-3xl opacity-100 cursor-pointer;
+   filter: drop-shadow(0 0 2em #646cffaa);
+}
+/*====================== */
+
+/* ===== LOGOUT ===== */
+.logout-button{
+    @apply text-xl opacity-75 cursor-default;
+ }
+ 
+ .logout-button:hover{
+    @apply text-xl opacity-100 cursor-pointer;
+    filter: drop-shadow(0 0 2em #646cffaa);
+ }
+ /*====================== */
+
+
+ /* ===== LOGIN ===== */
+.submit-button {
+    @apply w-[200px] rounded-[1em] bg-sky-900 py-3 text-xl;
+}
+.submit-button:hover {
+    @apply w-[200px] rounded-[1em] bg-sky-700 border-sky-500 py-3 text-xl;
+}
+ /*====================== */
