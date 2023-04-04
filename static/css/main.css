@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.theme-button {
+    @apply w-[30px] mx-[2em];
+}
+.dark-mode body {
+    @apply bg-slate-800 text-white;
+}
+
+
+/* ===== DASHBOARD HEADER ===== */
+.header-skeleton {
+    @apply h-[80px] flex justify-between items-center text-center;
+}
+.header-color{
+    @apply  bg-slate-200 ;
+}
+.dark-mode .header-color{
+    @apply bg-slate-700;
+}
+
+.header-title {
+    @apply px-3 text-[20px];
+}
+/*============================ */
